@@ -1,17 +1,22 @@
 
 const express = require('express')
-
 const app = express()
+const employeeRoutes = require('./src/routes/employeeRoutes')
+const {dbconnection} = require('./db');
+const cors = require('cors')
 
-const {employeeRoutes} = require('./src/routes/employeeRoutes')
+app.use(cors({
+  origin: '*'
+}))
 
 app.get('/',(req,res)=>{
     res.send("app started")
 })
-
+app.use(express.json())
 app.use('/',employeeRoutes)
 
-app.listen(5000,()=>{
-    console.log("Server runnuing on port 5000")
-})
+app.listen(5000, async () => {
+  await dbconnection(); 
+  console.log("Server running on port 5000");
+});
 
