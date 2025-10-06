@@ -45,7 +45,7 @@ GET → Fetch all employees.
 
 POST → Add a new employee.
 
-PUT → Update employee details.
+PATCH → Update employee details.
 
 DELETE → Remove employee records.
 
